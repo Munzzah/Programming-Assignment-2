@@ -83,7 +83,7 @@ public class LibrarySystem {
     private static void returnBooks() {
         System.out.print("Enter book title:");
         String title = scanner.nextLine().trim();
-        System.out.print("Enter number of books to return: ");
+        System.out.print("Enter number of books to return"):
         int returnQuantity = scanner.nextInt();
 
         Book book = library.get(title);
