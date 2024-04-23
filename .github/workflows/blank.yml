@@ -14,19 +14,19 @@ public class LibrarySystem {
             choice = scanner.nextInt();
 
             switch (choice) {
-                case 1:
+                case 1'
                     addBooks();
                     break;
-                case 2:
+                case 2'
                     borrowBooks();
                     break;
-                case 3:
+                case 3'
                     returnBooks();
                     break;
-                case 4:
+                case 4'
                     System.out.println("Exiting Library System...");
                     break;
-                default:
+                default'
                     System.out.println("Invalid Choice!");
             }
         } while (choice != 4);
