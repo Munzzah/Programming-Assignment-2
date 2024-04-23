@@ -1,0 +1,127 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class LibrarySystem {
+
+    private static final Scanner scanner = new Scanner(System.in);
+    private static HashMap<String, Book> library = new HashMap<>();
+
+    public static void main(String[] args) {
+        int choice;
+
+        do {
+            displayMenu();
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addBooks();
+                    break;
+                case 2:
+                    borrowBooks();
+                    break;
+                case 3:
+                    returnBooks();
+                    break;
+                case 4:
+                    System.out.println("Exiting Library System...");
+                    break;
+                default:
+                    System.out.println("Invalid Choice!");
+            }
+        } while (choice != 4);
+    }
+
+    private static void displayMenu() {
+        System.out.println("\nLibrary System Menu");
+        System.out.println("1. Add Books");
+        System.out.println("2. Borrow Books");
+        System.out.println("3. Return Books");
+        System.out.println("4. Exit");
+        System.out.print("Enter your choice: ");
+    }
+
+    private static void addBooks() {
+        System.out.print("Enter book title: ");
+        String title = scanner.nextLine().trim();
+        System.out.print("Enter author name: ");
+        String author = scanner.nextLine().trim();
+        System.out.print("Enter quantity: ");
+        int quantity = scanner.nextInt();
+
+        Book book = library.get(title);
+        if (book != null) {
+            book.setQuantity(book.getQuantity() + quantity);
+            System.out.println(quantity + " copies of " + title + " added successfully!");
+        } else {
+            library.put(title, new Book(title, author, quantity));
+            System.out.println(title + " by " + author + " added to the library!");
+        }
+        scanner.nextLine(); // Consume newline character after int input
+    }
+
+    private static void borrowBooks() {
+        System.out.print("Enter book title: ");
+        String title = scanner.nextLine().trim();
+        System.out.print("Enter number of books to borrow: ");
+        int borrowQuantity = scanner.nextInt();
+
+        Book book = library.get(title);
+        if (book != null && book.getQuantity() >= borrowQuantity) {
+            book.setQuantity(book.getQuantity() - borrowQuantity);
+            System.out.println(borrowQuantity + " copies of " + title + " borrowed successfully!");
+        } else {
+            if (book == null) {
+                System.out.println("Book not found in the library!");
+            } else {
+                System.out.println("Insufficient copies of " + title + " available!");
+            }
+        }
+        scanner.nextLine(); // Consume newline character after int input
+    }
+
+    private static void returnBooks() {
+        System.out.print("Enter book title: ");
+        String title = scanner.nextLine().trim();
+        System.out.print("Enter number of books to return: ");
+        int returnQuantity = scanner.nextInt();
+
+        Book book = library.get(title);
+        if (book != null) {
+            book.setQuantity(book.getQuantity() + returnQuantity);
+            System.out.println(returnQuantity + " copies of " + title + " returned successfully!");
+        } else {
+            System.out.println("Book not found in the library system!");
+        }
+        scanner.nextLine(); // Consume newline character after int input
+    }
+}
+
+class Book {
+    private String title;
+    private String author;
+    private int quantity;
+
+    public Book(String title, String author, int quantity) {
+        this.title = title;
+        this.author = author;
+        this.quantity = quantity;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+}
+
