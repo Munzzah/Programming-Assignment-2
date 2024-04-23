@@ -38,15 +38,15 @@ public class LibrarySystem {
         System.out.println("2. Borrow Books");
         System.out.println("3. Return Books");
         System.out.println("4. Exit");
-        System.out.print("Enter your choice: ");
+        System.out.print("Enter your choice:");
     }
 
     private static void addBooks() {
-        System.out.print("Enter book title: ");
+        System.out.print("Enter book title:");
         String title = scanner.nextLine().trim();
-        System.out.print("Enter author name: ");
+        System.out.print("Enter author name:");
         String author = scanner.nextLine().trim();
-        System.out.print("Enter quantity: ");
+        System.out.print("Enter quantity:");
         int quantity = scanner.nextInt();
 
         Book book = library.get(title);
@@ -61,9 +61,9 @@ public class LibrarySystem {
     }
 
     private static void borrowBooks() {
-        System.out.print("Enter book title: ");
+        System.out.print("Enter book title:");
         String title = scanner.nextLine().trim();
-        System.out.print("Enter number of books to borrow: ");
+        System.out.print("Enter number of books to borrow:");
         int borrowQuantity = scanner.nextInt();
 
         Book book = library.get(title);
@@ -81,7 +81,7 @@ public class LibrarySystem {
     }
 
     private static void returnBooks() {
-        System.out.print("Enter book title: ");
+        System.out.print("Enter book title:");
         String title = scanner.nextLine().trim();
         System.out.print("Enter number of books to return: ");
         int returnQuantity = scanner.nextInt();
